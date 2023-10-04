@@ -2,8 +2,8 @@ const TelegramBot = require('node-telegram-bot-api');
 const express = require('express')
 const cors = require('cors')
 
-const token = '5633382457:AAFH8Ds-8GkGn9R-gPx-xPkpyRdWb22ofHM'
-const webAppUrl = 'https://jocular-kitten-5df275.netlify.app'
+const token = '5982883388:AAEytNL3Zt39xPPXFBd4tL70-PIVGN3nZOQ'
+const webAppUrl = 'https://react-telegram3.netlify.app/'
 
 const bot = new TelegramBot(token, { polling: true });
 const app = express()
@@ -34,8 +34,13 @@ bot.on('message', async (msg) => {
                 ]
             }
         })  
+    } else if (text === "Тест") {
+        await bot.sendMessage(chatId, "Тест пройден", {
+            reply_markup: {
+                remove_keyboard: true
+            }
+        })
     }
-
     if (msg?.web_app_data?.data) {
         try {
            const data = JSON.parse(msg?.web_app_data?.data)
